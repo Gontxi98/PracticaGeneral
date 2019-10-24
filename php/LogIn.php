@@ -31,13 +31,16 @@
             $contraseña = $row['Password'];
 
             if($contraseña==$password){
-                $host = $_SERVER['HTTP_HOST'];
-                $uri = rtrim(dirname($_SERVER['PHP_SELF']), '/\\');
-                $extra = 'QuestionForm.php?correo='.$email;
-                header("Location: http://$host$uri/$extra");
+                echo "<script>alert('Bienvenido, ".$email."');</script>";
+                echo "<script>window.location.href='../php/QuestionForm.php?correo=".$email."';</script>";
             }else{
                 echo "Los datos de acceso son incorrectos";
-     }
+            }  if($contraseña==$password){
+                echo "<script>alert('Bienvenido, ".$email."');</script>";
+                echo "<script>window.location.href='../php/QuestionForm.php?correo=".$email."';</script>";
+            }else{
+                echo "Los datos de acceso son incorrectos";
+            }
 
       }
           ?>
