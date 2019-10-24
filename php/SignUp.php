@@ -63,7 +63,6 @@
       		 if (mysqli_query($mysql, $sql)) {
       		 	echo "¡Te has registrado con éxito <b>".$nom_ap."</b>!<br>";
       		 	echo "Inicia sesión <a href='../php/LogIn.php'>aquí</a><br>";
-      		 	echo "o ve a la página de <a href='../php/Layout.php'>inicio</a>.";
             } else {
             	echo "Este usuario ya existe";
             }
