@@ -2,10 +2,10 @@
 <header class='main' id='h1'>
   <span class="right" ><a href="../php/SignUp.php" id="signup">Registro</a></span>
   <span class="right" ><a href="../php/LogIn.php" id="login">Login</a></span>
+   <div style="text-align: center;" id="logoutMail" style="display:none"><span><b><?php if (isset($_GET['correo'])) echo $_GET['correo']." "; ?></b></span></div>
   <span class="right"><a href="../php/LogOut.php" id="logout" style="display:none;">Logout</a></span>
 </header>
 <nav class='main' id='n1' role='navigation'>
-  <div style="text-align: center;" id="logoutMail" style="display:none"><span><?php if (isset($_GET['correo'])) echo $_GET['correo']." "; ?></span></div>
   <span ><a href='Layout.php' id="layout">Inicio</a></span>
   <span ><a href='../php/QuestionForm.php' id="addQ" style="display:none;"> Insertar Pregunta</a></span>
   <span ><a href='../php/ShowQuestions.php' id="showQ" style="display:none;"> Ver Preguntas</a></span>
