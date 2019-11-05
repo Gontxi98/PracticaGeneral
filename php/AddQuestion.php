@@ -7,48 +7,40 @@
   <?php include '../php/Menus.php' ?>
   <section class="main" id="s1">
     <div>
-      <?php
-      include "DbConfig.php";
-      $mysql = new mysqli($server, $user, $pass, $basededatos);
 
-      if ($mysql->connect_error) {
-               die("Error de conexión: " . $mysql->connect_error);
-      }
-  
-      	$email=$_POST["correo"];
-  		$pregunta=$_POST["pregunta"];
-  		$correcta=$_POST["correcta"];
-  		$incorrecta1=$_POST["incorrecta1"];
-  		$incorrecta2=$_POST["incorrecta2"];
-  		$incorrecta3=$_POST["incorrecta3"];
-  		$complejidad=$_POST["complejidad"];
-
-  		//Código validación
-  		//exp regular
-  		if(!preg_match("/([a-z]+[0-9]{3}@+(ikasle\.ehu\.eus|ikasle\.ehu\.es))/", $email)&&!preg_match("/[a-z]+(\.?)+[a-z]@+(ehu\.es|ehu\.eus)/", $email)){
-  			echo "El email introducido es incorrecto";
-  			die("");
-
-  		}
-  		//pregunta <10
-  		if(strlen($pregunta)<10){
-  			echo "La pregunta debe tener al menos 10 caracteres";
-  			die("");
-  		}
-
-    	$sql = "INSERT INTO preguntas VALUES (NULL,'$email','$pregunta','$correcta','$incorrecta1','$incorrecta2','$incorrecta3','$complejidad')";
-
-            if (mysqli_query($mysql, $sql)) {
-            	$correo = $_POST['correo'];
-				 echo "<script>
-                	alert('Pregunta añadida exitosamente');		
-                	window.location.href='../php/ShowQuestions.php?correo=$correo';
-             		</script>";
-            } else {
-            	echo "Error al insertar la pregunta en la BD.";
-            }
-      ?>
+    <?php
+        include 'DbConfig.php';
+        //Creamos la conexion con la BD.
+        $mysqli = mysqli_connect($server,$user,$pass,$basededatos);
+        if(!$mysqli)
+        {
+            die("Fallo al conectar a MySQL: " .mysqli_connect_error());
+        }
+		//Creamos la consulta que introducira los datos en el servidor
+        $email = $_REQUEST['dirCorreo'];
+        $enunciado = $_REQUEST['nombrePregunta'];
+        $respuestac = $_REQUEST['respuestaCorrecta'];
+        $respuestai1 = $_REQUEST['respuestaIncorrecta1'];
+        $respuestai2 = $_REQUEST['respuestaIncorrecta2'];
+        $respuestai3 = $_REQUEST['respuestaIncorrecta3'];
+        $complejidad = $_REQUEST['complejidad'];
+        $tema = $_REQUEST['temaPregunta'];
+    
+        $sql = "INSERT INTO PREGUNTAS(email, enunciado, respuestac, respuestai1, respuestai2, respuestai3, complejidad, tema) VALUES('$email', '$enunciado', '$respuestac', '$respuestai1', '$respuestai2', '$respuestai3', $complejidad, '$tema')";
+    
+        if(!mysqli_query($mysqli,$sql))
+        {
+            die("Error: " .mysqli_error($mysqli));
+        }
+        echo "Registro añadido";
+        
+        mysqli_close($mysqli);
+    ?>
     </div>
+      <div>
+          <a href="ShowQuestions.php">Click en este enlace para ver todos los registros.</a>
+      
+      </div>
   </section>
   <?php include '../html/Footer.html' ?>
 </body>

@@ -6,12 +6,16 @@
 <body>
   <?php include '../php/Menus.php' ?>
   <section class="main" id="s1">
-    <?php 
-    	echo "Hasta pronto, ".$_GET['correo'];	
-    	echo "<script>window.location.href='../php/Layout.php?';</script>";
-    ?>
+    <div>
+        <?php
+            echo "<script>
+                    alert('Adios, vuelve cuando quieras.');
+                    window.location.href='Layout.php';
+                </script>";  
+        ?>
+      
+    </div>
   </section>
   <?php include '../html/Footer.html' ?>
 </body>
 </html>
-

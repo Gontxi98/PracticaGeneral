@@ -1,36 +1,73 @@
+<?php if(isset($_GET['email'])){
+        $email = "?email=".$_GET['email'];
+    }else{
+        $email = "";
+    } ?>
 <div id='page-wrap'>
 <header class='main' id='h1'>
-  <span class="right" ><a href="../php/SignUp.php" id="signup">Registro</a></span>
-  <span class="right" ><a href="../php/LogIn.php" id="login">Login</a></span>
-   <div style="text-align: center;" id="logoutMail" style="display:none"><span><b><?php if (isset($_GET['correo'])) echo $_GET['correo']." "; ?></b></span></div>
-  <span class="right"><a href="../php/LogOut.php" id="logout" style="display:none;">Logout</a></span>
+  <span class="right" id="register"><a href="SignUp.php">Registro</a></span>
+        <span class="right" id="login"><a href="LogIn.php">Login</a></span>
+        <span class="right" id="logout" style="display:none;"><a href="LogOut.php">Logout</a></span>
+
 </header>
 <nav class='main' id='n1' role='navigation'>
-  <span ><a href='Layout.php' id="layout">Inicio</a></span>
-  <span ><a href='../php/QuestionForm.php' id="addQ" style="display:none;"> Insertar Pregunta</a></span>
-  <span ><a href='../php/ShowQuestions.php' id="showQ" style="display:none;"> Ver Preguntas</a></span>
-  <span ><a href='Credits.php' id="credits">Créditos</a></span>
+    <span><a href='Layout.php<?php echo $GLOBALS["email"];?>'>Inicio</a></span>
+    <span id="insertq" style="display:none"><a href='QuestionFormHtml5.php<?php echo $GLOBALS["email"];?>'> Insertar Pregunta</a></span>
+    <span id="showq" style="display:none"><a href='ShowQuestionsWithImage.php<?php echo $GLOBALS["email"];?>'>Ver Preguntas</a></span>
+    <span><a href='Credits.php<?php echo $GLOBALS["email"];?>'>Creditos</a></span>
 </nav>
-<?php 
-if(isset($_GET['correo'])){
-	$correo = $_GET['correo'];
-	echo "<script src='../js/jquery-3.4.1.min.js'></script>";
-	echo "<script> $('#logout').css('display', 'inline');
-	$('#signup').css('display','none');
-	$('#login').css('display','none');
-	$('#showQ').css('display','inline');
-	$('#addQ').css('display','inline');
-	$('#logoutMail').css('display','inline');
-	$('#welcome').text('¡Bienvenido, $correo');
-	</script>";
-	echo "<script>
-	$('#layout').attr('href','Layout.php?correo=$correo	');
-	$('#addQ').attr('href','../php/QuestionForm.php?correo=$correo');
-	$('#showQ').attr('href','../php/ShowQuestions.php?correo=$correo');
-	$('#credits').attr('href','Credits.php?correo=$correo');
-	$('#logout').attr('href','../php/LogOut.php?correo=$correo');
-	</script>";
-}
+    <script src="../js/jquery-3.4.1.min.js"></script>
+<script>
+    function inicioSesion(){
+        $('#insertq').show();
+        $('#showq').show();
+        $('#register').hide();
+        $('#login').hide();
+        $('#logout').show();
+        $("#h1").append("<p><?php echo $_GET["email"];?></p>");
+        $("#h1").append("<img width=\"50\" height=\"60\" src=\"data:image/*;base64,<?php echo getImagenDeBD();?>\" alt=\"Imagen\"/>");
+    }
+    
+    function cierreSesion(){
+            $('#insertq').hide();
+            $('#showq').hide();
+            $('#register').show();
+            $('#login').show();
+            $('#logout').hide();
+    }
+</script>
+<?php
+    
+    if(isset($_GET['email'])){
+        echo "<script>inicioSesion();</script>";
+    }else{
 
-?>
+        echo "<script>cierreSesion();</script>";
+    }
+    
+    function getImagenDeBD(){
+        if(isset($_GET['email'])){
+            include 'DbConfig.php';
+            $mysqli = mysqli_connect($server,$user,$pass,$basededatos);
+            if(!$mysqli){
+                die("Error: ".mysqli_connect_error);
+            }
 
+            $sql = "SELECT foto FROM usuarios WHERE email=\"".$_GET['email']."\";";
+            $resul = mysqli_query($mysqli,$sql, MYSQLI_USE_RESULT);
+            if(!$resul){
+                die("Error: ".mysqli_error($mysqli));
+            }
+            $img = mysqli_fetch_array($resul);
+            return $img['foto'];
+        }
+        else{
+            return "";
+        }
+    }
+    ?>
+    
+    
+    
+    
+    

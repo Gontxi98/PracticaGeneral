@@ -8,23 +8,20 @@
   <section class="main" id="s1">
     <div>
 
-      <h2>DATOS DEL AUTOR/AUTORES</h2>
-      <hr><br><br>
-      <p><b>Aritz García & Gonzalo Galdós</b></p>
-      <p>Especialidad de grado: Ingeniería del Software</p>
-      <div align="center">
-      <table>
-      	<tr>
-      	<td><img src="https://cdn.bulbagarden.net/upload/thumb/2/24/512Simisage.png/250px-512Simisage.png" width="128" height="128"></td>
-      	<td><img src="https://cdn.bulbagarden.net/upload/thumb/7/7c/514Simisear.png/600px-514Simisear.png" width="128" height="128"></td>
-      	</tr>
-      	<tr>
-      		<td><a href="mailto:ggaldos002@ikasle.ehu.es">agarcia717@ikasle.ehu.es</a> | </td>
-      		<td><a href="mailto:ggaldos002@ikasle.ehu.es">ggaldos002@ikasle.ehu.es</a></td>
-      	</tr>
-  	  </table>
+      <h2>DATOS DEL AUTOR/AUTORES</h2><br>
+        <p>Gorka Alvarez Marlasca</p>
+        <p>Correo contacto: <a href="mailto:galvarez024@ikasle.ehu.eus" >galvarez024@ikasle.ehu.eus</a></p>
+        <br>
+        <img src="../images/FotoGorka.jpg" width="110" height="125">
+        <p>Estudiante de Ingeniería Informática en la especialización <br> de Ingeniería del Software.</p>
+        <br><hr>
+        <p>Iñaki Garcia Noya</p>
+        <p>Correo contacto: <a href="mailto:igarcia361@ikasle.ehu.eus" >igarcia361@ikasle.ehu.eus</a></p>
+        <br>
+        <img src="../images/avatarIaki.png.jpg" width="125" height="125">
+        <p>Estudiante de Ingeniería Informática en la especialización <br> de Ingeniería del Software.</p>
+
     </div>
-    <br><br><hr>
   </section>
   <?php include '../html/Footer.html' ?>
 </body>

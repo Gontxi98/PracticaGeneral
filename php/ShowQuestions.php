@@ -7,39 +7,23 @@
   <?php include '../php/Menus.php' ?>
   <section class="main" id="s1">
     <div>
-    <div align="center">
-    <h1>Tabla de preguntas de la BD</h1>	
-    </div>
-    <hr><br>
-    </table>
-    <table align="center" border="1px">
-    	<tr>
-    		<th>ID pregunta</th>
-    		<th>Autor</th>
-    		<th>Pregunta</th>
-    		<th>Respuesta correcta</th>
-    		<th>Respuesta incorrecta 1</th>
-    		<th>Respuesta incorrecta 2</th>
-    		<th>Respuesta incorrecta 3</th>
-    		<th>&nbsp;Complejidad&nbsp;</th>
-    	</tr>
     <?php
-      include "DbConfig.php";
-      $mysql = new mysqli($server, $user, $pass, $basededatos);
-
-       if ($mysql->connect_error) {
-               die("Error de conexión: " . $mysql->connect_error);
-      }
-
-      $sql = "SELECT * FROM preguntas";
-
-      $resultado = mysqli_query($mysql,$sql);
-
-      while($row = mysqli_fetch_array($resultado)){
-      	echo '<tr><td>' . $row['ID'] . '</td><td>' . $row['Autor'] . '</td><td>' . $row['Pregunta'] . '</td><td>' . $row['Respuesta correcta'] . '</td><td>' . $row['Respuesta incorrecta1'] . '</td><td>' . $row['Respuesta incorrecta2'] . '</td><td>' . $row["Respuesta incorrecta3"] . '</td><td>' . $row["Complejidad"] . '</td></tr>';
-      }
+        include 'DbConfig.php';
+        //Creamos la conexion con la BD.
+        $link = mysqli_connect($server,$user,$pass,$basededatos);
+        if(!$link){
+            die("Fallo al conectar con la base de datos: " .mysqli_connect_error());
+        }
+        
+        $sql = "SELECT * FROM PREGUNTAS;";
+        $resul = mysqli_query($link,$sql);
+        echo "<table border = ><tr><th>Email</th><th>Enunciado</th><th>Respuesta Correcta</th><th>Respuesta Incorrecta 1</th> <th>Respuesta Incorrecta 2</th><th>Respuesta Incorrecta 3</th><th>Complejidad</th><th>Tema</th></tr>";
+        while($row = mysqli_fetch_array($resul)){
+            echo "<tr><td>".$row['email']."</td><td>".$row['enunciado']."</td><td>".$row['respuestac']."</td><td>".$row['respuestai1']."</td><td>".$row['respuestai2']."</td><td>".$row['respuestai3']."</td><td>".$row['complejidad']."</td><td>".$row['tema']."</td></tr>";
+        }
+        echo "</table>";
+        mysqli_close($link);
     ?>
-	</table>
     </div>
   </section>
   <?php include '../html/Footer.html' ?>
