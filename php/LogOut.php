@@ -9,7 +9,7 @@
     <div>
         <?php
             echo "<script>
-                    alert('Adios, vuelve cuando quieras.');
+                    alert('Adiós, vuelve cuando quieras.');
                     window.location.href='Layout.php';
                 </script>";  
         ?>

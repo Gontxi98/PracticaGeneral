@@ -1,8 +1,8 @@
-﻿<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <assessmentItems>
 	<assessmentItem subject="Web" author="jvadillo001@ikasle.ehu.eus">
 		<itemBody>
-			<p>Tag HTML para a&#xF1;adir un formulario</p>
+			<p>Tag HTML para añadir un formulario</p>
 		</itemBody>
 		<correctResponse>
 			<value>
@@ -17,8 +17,8 @@
 	</assessmentItem>
 		<assessmentItem subject="Internet" author="rarruabarrena001@ikasle.ehu.eus">
 		<itemBody>
-			<p>Este protocolo acabar&#xE1; funcionando
-			incluso entre dos latas unidas por un cord&#xF3;n</p>
+			<p>Este protocolo acabará funcionando
+			incluso entre dos latas unidas por un cordón</p>
 		</itemBody>
 		<correctResponse>
 			<value>
@@ -31,4 +31,4 @@
 			<value> Ninguna es correcta </value>
 		</incorrectResponses>
 	</assessmentItem>
-</assessmentItems>
+<assessmentItem subject="vvv" author="agarcia@ehu.es"><itemBody><p>vvvvvvvvvvvvvvvvvvvvv</p></itemBody><correctResponse><value>v</value></correctResponse><incorrectResponses><value>n</value><value>m</value><value>b</value></incorrectResponses></assessmentItem><assessmentItem subject="XML" author="agarcia@ehu.es"><itemBody><p>ultima prueba de xml</p></itemBody><correctResponse><value>funciona</value></correctResponse><incorrectResponses><value>no</value><value>no</value><value>no</value></incorrectResponses></assessmentItem></assessmentItems>

@@ -8,11 +8,12 @@
   <section class="main" id="s1">
     <div>
          <?php
+         //Añadir preguntas a la BD
             if(isset($_REQUEST['dirCorreo'])){
                 $regexMail="/((^[a-zA-Z]+(([0-9]{3})+@ikasle\.ehu\.(eus|es))$)|^[a-zA-Z]+(\.[a-zA-Z]+@ehu\.(eus|es)|@ehu\.(eus|es))$)/";
                 $regexPreg="/^.{10,}$/";
                  if(preg_match($regexMail,$_REQUEST['dirCorreo'])){
-                     if(preg_match($regexPreg,$_REQUEST['nombrePregunta'])){
+                     if(preg_match($regexPreg,$_REQUEST['nombrePregunta'])){                      
                             include 'DbConfig.php';
                             //Creamos la conexion con la BD.
                             $mysqli = mysqli_connect($server,$user,$pass,$basededatos);
@@ -41,6 +42,28 @@
                             echo "Registro añadido<br>";
                             echo "<a href=\"ShowQuestionsWithImage.php?email=".$_GET['email']."\">Click en este enlace para ver todos los registros.</a>";
                             mysqli_close($mysqli);
+
+                            //Añadir preguntas a Questions.xml
+                            if(!$xml = simplexml_load_file('../xml/Questions.xml')){
+                              echo "No se ha podido insertar la pregunta en el XML.";
+                            } else {
+                                $pregunta = $xml->addChild('assessmentItem');
+                                $pregunta->addAttribute('subject',$tema);
+                                $pregunta->addAttribute('author',$email);
+
+                                $enunciado_ = $pregunta->addChild('itemBody');
+                                $p = $enunciado_->addChild('p',$enunciado);
+
+                                $correcta = $pregunta->addChild('correctResponse');
+                                $value = $correcta->addChild('value',$respuestac);
+
+                                $incorrectas = $pregunta->addChild('incorrectResponses');
+                                $i1 = $incorrectas->addChild('value',$respuestai1);
+                                $i2 = $incorrectas->addChild('value',$respuestai2);
+                                $i3 = $incorrectas->addChild('value',$respuestai3);
+
+                                $xml->asXML('../xml/Questions.xml');
+                              }                             
                      }else{
                          echo "El enunciado de la pregunta debe tener mas de 10 caracteres.<br>";
                          echo"<a href='javascript:history.back()'>Volver al formulario.</a>";
@@ -48,7 +71,7 @@
                  }else{
                     echo "El correo electronico no es correcto.<br>";
                     echo"<a href='javascript:history.back()'>Volver al formulario.</a>";
-                 }
+                 }            
             }          
           ?>
     </div>

@@ -50,7 +50,7 @@
                     </script>";  
                 }else{
                     echo "Usuario o contraseña incorrectos, prueba de nuevo. <br>";
-                    echo "<a href=\"javascript:history.back()\">Volver a atras</a>";
+                    echo "<a href=\"javascript:history.back()\">Volver atrás</a>";
                 }
                 
             }
