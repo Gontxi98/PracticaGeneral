@@ -26,6 +26,6 @@
     ?>
     </div>
   </section>
-  <?php include '../html/Footer.html' ?>
+  <?php include '../html/Footer.html'?>
 </body>
 </html>

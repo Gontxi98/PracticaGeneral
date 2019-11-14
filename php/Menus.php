@@ -12,17 +12,19 @@
 </header>
 <nav class='main' id='n1' role='navigation'>
     <span><a href='Layout.php<?php echo $GLOBALS["email"];?>'>Inicio</a></span>
-    <span id="insertq" style="display:none"><a href='QuestionFormHtml5.php<?php echo $GLOBALS["email"];?>'> Insertar Pregunta</a></span>
+    <!--<span id="insertq" style="display:none"><a href='QuestionFormHtml5.php<?php echo $GLOBALS["email"];?>'> Insertar Pregunta</a></span>
     <span id="showq" style="display:none"><a href='ShowQuestionsWithImage.php<?php echo $GLOBALS["email"];?>'>Ver Preguntas</a></span>
-    <span id="showXML" style="display:none"><a href='ShowXMLQuestions.php<?php echo $GLOBALS["email"];?>'>Ver Preguntas XML</a></span>
+    <span id="showXML" style="display:none"><a href='ShowXMLQuestions.php<?php echo $GLOBALS["email"];?>'>Ver Preguntas XML</a></span>-->
+    <span id="gestionPreguntas" style="display:none"><a href='HandlingQuizesAjax.php<?php echo $GLOBALS["email"];?>'>Gestionar preguntas</a></span>
     <span><a href='Credits.php<?php echo $GLOBALS["email"];?>'>Créditos</a></span>
 </nav>
     <script src="../js/jquery-3.4.1.min.js"></script>
 <script>
     function inicioSesion(){
-        $('#insertq').show();
-        $('#showq').show();
-        $('#showXML').show();
+        //$('#insertq').show();
+        //$('#showq').show();
+        //$('#showXML').show();
+        $('#gestionPreguntas').show();
         $('#register').hide();
         $('#login').hide();
         $('#logout').show();
@@ -31,9 +33,10 @@
     }
     
     function cierreSesion(){
-            $('#insertq').hide();
-            $('#showq').hide();
-            $('#showXML').hide();
+            //$('#insertq').hide();
+            //$('#showq').hide();
+            //$('#showXML').hide();
+            $('#gestionPreguntas').hide();
             $('#register').show();
             $('#login').show();
             $('#logout').hide();

@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <?php include '../html/Head.html'?>
+  <!--<?php include '../html/Head.html'?>-->
 </head>
 <body>
-  <?php include '../php/Menus.php' ?>
+  <!--<?php include '../php/Menus.php' ?>-->
   <section class="main" id="s1">
     <div>
          <?php
@@ -30,9 +30,9 @@
                             $respuestai3 = $_REQUEST['respuestaIncorrecta3'];
                             $complejidad = $_REQUEST['complejidad'];
                             $tema = $_REQUEST['temaPregunta'];
-                            $image = $_FILES['Imagen']['tmp_name'];
-                            $contenido_imagen = base64_encode(file_get_contents($image));
-
+                            //$image = $_FILES['Imagen']['tmp_name'];
+                            //$contenido_imagen = base64_encode(file_get_contents($image));
+                              $contenido_imagen = null;
                             $sql = "INSERT INTO preguntas(email, enunciado, respuestac, respuestai1, respuestai2, respuestai3, complejidad, tema, imagen) VALUES('$email', '$enunciado', '$respuestac', '$respuestai1', '$respuestai2', '$respuestai3', $complejidad, '$tema', '$contenido_imagen')";
 
                             if(!mysqli_query($mysqli,$sql))
@@ -40,7 +40,7 @@
                                 die("Error: " .mysqli_error($mysqli));
                             }
                             echo "Registro añadido<br>";
-                            echo "<a href=\"ShowQuestionsWithImage.php?email=".$_GET['email']."\">Click en este enlace para ver todos los registros.</a>";
+                            //echo "<a href=\"ShowQuestionsWithImage.php?email=".$_GET['dirCorreo']."\">Click en este enlace para ver todos los registros.</a>";
                             mysqli_close($mysqli);
 
                             //Añadir preguntas a Questions.xml
@@ -63,6 +63,7 @@
                                 $i3 = $incorrectas->addChild('value',$respuestai3);
 
                                 $xml->asXML('../xml/Questions.xml');
+                                echo "Pregunta añadida al archivo XML";
                               }                             
                      }else{
                          echo "El enunciado de la pregunta debe tener mas de 10 caracteres.<br>";
@@ -76,6 +77,6 @@
           ?>
     </div>
   </section>
-  <?php include '../html/Footer.html' ?>
+  <!--<?php include '../html/Footer.html' ?>-->
 </body>
 </html>

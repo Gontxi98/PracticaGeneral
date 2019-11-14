@@ -37,8 +37,7 @@
 
             
             <p> <input type="submit" id="submit" value="Enviar"> <input type="reset" value="Limpiar"></p>
-        </form>
-        
+        </form>    
     </div>
   </section>
   <?php include '../html/Footer.html' ?>
