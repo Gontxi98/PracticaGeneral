@@ -4,7 +4,6 @@
 </head>
 <body>
       <?php
-        echo "<script> alert('hijodeputa');</script>";
         echo "<table align='center' border><tr><th>Autor</th><th>Enunciado</th><th>Respuesta Correcta</th>";
         if(!$xml = simplexml_load_file('../xml/Questions.xml')){
           echo "No se ha podido cargar el archivo XML.";

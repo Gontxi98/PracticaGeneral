@@ -9,6 +9,7 @@ $(document).ready(function(){
             data: form,
             success: function(){
             $('#mensaje').html('<strong>Pregunta insertada correctamente.</strong>');
+            $('#preguntas').load('../php/TablaPreguntas.php');
         },
         error: function(){
             $('#mensaje').html('<strong>Error al añadir la pregunta.</strong>');
