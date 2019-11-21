@@ -4,7 +4,9 @@
     <?php include '../html/Head.html'?>
 </head>
 <body>
-  <?php include '../php/Menus.php' ?>
+    <script src="../js/jquery-3.4.1.min.js"></script>
+    <script src="../js/ComprobarEmailContraseña.js"></script>
+    <?php include '../php/Menus.php' ?>
   <section class="main" id="s1">
       <h2>Registro de nuevo usuario.</h2>
       
@@ -16,11 +18,13 @@
                 <option value="2">Profesor</option>
             </select>
             <p>Introduce tu dirección de correo: *</p>
-            <input type="email" size="60" id="dirCorreo" name="dirCorreo" required >
+            <input type="email" size="60" id="dirCorreo" name="dirCorreo" required>
+            <div id="mailSW" name="mailSW"></div>
             <p>Introduce tu nombre y apellido(s) *</p>
             <input type="text" size="60" id="nombreApellidos" name="nombreApellidos" required>
             <p>Contraseña: *</p>
             <input type="password" size="60" id="pass" name="pass" required>
+            <div id="passSW" name="passSW"></div>
             <p>Repite la contraseña: *</p>
             <input type="password" size="60" id="passR" name="passR" required>
             <div id="selector">
