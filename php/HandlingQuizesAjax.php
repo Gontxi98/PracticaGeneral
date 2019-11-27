@@ -1,3 +1,17 @@
+<?php
+session_start();
+if(!isset($_SESSION['email'])){
+    echo "<script>
+                    alert('Tienes que estar registrado para usar esta aplicación');
+                    window.location.href='../php/SignUp.php';
+                    </script>"; 
+}else if($_SESSION['email'] == "admin@ehu.es" ){
+    echo "<script>
+                    alert('Un administrador no puede gestionar preguntas');
+                    window.location.href='Layout.php';
+                    </script>"; 
+}
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -14,7 +28,7 @@
     <div>
         <form action="AddQuestionWithImage.php" name="fquestion" id="fquestion" method="post" enctype="multipart/form-data">
             <p>Introduce tu dirección de correo: *</p>
-            <?php echo "<input type='text' id='dirCorreo' name='dirCorreo' size='60' value='".$_REQUEST['email']."' readonly>"; ?>
+            <?php echo "<input type='text' id='dirCorreo' name='dirCorreo' size='60' value='".$_SESSION['email']."' readonly>"; ?>
             <p>Introduce el enunciado de la pregunta: *</p>
             <input type="text" size="60" id="nombrePregunta" name="nombrePregunta">
             <p>Respuesta correcta: *</p>

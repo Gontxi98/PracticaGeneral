@@ -1,3 +1,6 @@
+<?php
+session_start();
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -8,6 +11,7 @@
   <section class="main" id="s1">
     <div>
         <?php
+            session_destroy();
             echo "<script>
                     alert('Adiós, vuelve cuando quieras.');
                     window.location.href='Layout.php';

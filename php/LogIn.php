@@ -1,3 +1,7 @@
+<?php
+session_start();
+?>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -41,15 +45,17 @@
                     die("Error: ".mysqli_error($mysqli));
                 }
                 $row = mysqli_fetch_array($resultado);
-                if($row['email']==$email){
+                if($row['email']==$email && $row['estado']=='habilitado'){
                    /* sleep(3);
                     header("location:Layout.php?email=".$_REQUEST['dirCorreo']);*/
+                    $_SESSION['email']=$email;
                     echo "<script>
-                    alert('Inicio de sesion realizado correctamente. Pulsa aceptar para acceder a la pantalla principal.');
-                    window.location.href='Layout.php?email=".$_REQUEST['dirCorreo']."';
+                    alert('Inicio de sesión realizado correctamente. Pulsa aceptar para acceder a la pantalla principal.');
+                    window.location.href='Layout.php';
                     </script>";  
+                  
                 }else{
-                    echo "Usuario o contraseña incorrectos, prueba de nuevo. <br>";
+                    echo "Datos incorrectos o usuario inhabilitado, sentimos las molestias. <br>";
                     echo "<a href=\"javascript:history.back()\">Volver atrás</a>";
                 }
                 
