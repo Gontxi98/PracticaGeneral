@@ -95,7 +95,7 @@
             }
             
             $contenido_imagen = base64_encode(file_get_contents($image));
-            $sql = "INSERT INTO usuarios VALUES ($tipo,'$email','$nombreApellidos','$pass','$contenido_imagen','habilitado');";
+            $sql = "INSERT INTO usuarios VALUES ('$tipo','$email','$nombreApellidos','$pass','$contenido_imagen','habilitado');";
             
              if(!mysqli_query($mysqli,$sql))
             {
