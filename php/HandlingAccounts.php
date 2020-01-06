@@ -34,10 +34,10 @@ if(!isset($_SESSION['email'])){
         if(!$resul){
             die("Error: ".mysqli_error($link));
         }
+        $regexMail="/((^[a-zA-Z]+(\.[a-zA-Z]+@ehu\.(eus|es)|@ehu\.(eus|es))$)/";
         
         echo "<table border = ><tr><th>Email</th><th>Pass</th><th>Imagen</th><th>Estado</th> <th>Bloqueo</th><th>Borrar</th></tr>";
         while($row = mysqli_fetch_array($resul)){
-
             echo "<tr><td>".$row['email']."</td><td>".$row['pass']."</td><td><img width=\"150\" height=\"150\" src=\"data:image/*;base64, ".$row['foto']."\" alt=\"Imagen\"/></td><td>".$row['estado']."</td><td><input type='button' value = 'Cambiar Estado' onclick= CambiarEstado('".$row['email']."')></td><td><input type='button' value = 'Borrar Usuario' onclick= BorrarUsuario('".$row['email']."')></td></tr>";
         }
         echo "</table>";

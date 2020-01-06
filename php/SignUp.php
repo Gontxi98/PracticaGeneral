@@ -88,6 +88,7 @@
             $email = $_REQUEST['dirCorreo'];
             $nombreApellidos = $_REQUEST['nombreApellidos'];
             $pass = $_REQUEST['pass'];
+            $cryptpass = crypt($pass,"SisWeb");
             if($_FILES['Imagen']['name'] == ""){               
                 $image = "../images/usuarioAnonimo.jpg";
             }else{
@@ -95,7 +96,7 @@
             }
             
             $contenido_imagen = base64_encode(file_get_contents($image));
-            $sql = "INSERT INTO usuarios VALUES ('$tipo','$email','$nombreApellidos','$pass','$contenido_imagen','habilitado');";
+            $sql = "INSERT INTO usuarios VALUES ('$tipo','$email','$nombreApellidos','$cryptpass','$contenido_imagen','habilitado');";
             
              if(!mysqli_query($mysqli,$sql))
             {

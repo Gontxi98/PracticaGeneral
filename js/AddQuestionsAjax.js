@@ -1,18 +1,26 @@
 $(document).ready(function(){
     $('#enviar').click(function(){
-     var url = '../php/AddQuestionWithImage.php';
-     var form = $('#fquestion').serialize();
-     alert(form);
+     var urrl = '../php/AddQuestionWithImage.php';
+     var frm = $("#fquestion")[0];
+     var fd = new FormData(frm);
+     var files = $('#file')[0].files[0];
+     fd.append('file',files);
         $.ajax({
-            type: 'post',
-            url: url,
-            data: form,
-            success: function(){
+            type: 'POST',
+            enctype: 'multipart/form-data',
+            url: urrl,
+            contentType: false,
+            processData: false,
+            data: fd,
+            dataType: "html",
+            success: function(data){
             $('#mensaje').html('<strong>Pregunta insertada correctamente.</strong>');
             $('#preguntas').load('../php/TablaPreguntas.php');
+            console.log(data);
         },
         error: function(){
             $('#mensaje').html('<strong>Error al añadir la pregunta.</strong>');
+            console.log(data)
         }
         });
     });

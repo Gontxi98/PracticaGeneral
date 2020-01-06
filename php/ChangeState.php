@@ -1,4 +1,17 @@
 <?php  
+session_start();
+if(!isset($_SESSION['email'])){
+     echo "<script>
+                    alert('Tienes que estar registrado para usar esta aplicación');
+                    window.location.href='../php/SignUp.php';
+                    </script>"; 
+}else if($_SESSION['email'] != "admin@ehu.es" ){
+    echo "<script>
+                    alert('No tienes privilegios para gestionar usuarios');
+                    window.location.href='Layout.php';
+                    </script>"; 
+}else{
+
         include 'DbConfig.php';
         //Creamos la conexion con la BD.
         $link = mysqli_connect($server,$user,$pass,$basededatos);
@@ -22,5 +35,5 @@
         mysqli_query($link,$sql);
         mysqli_close();
         echo "<script> window.location.href='../php/HandlingAccounts.php';</script>";
-
+    }
 ?>

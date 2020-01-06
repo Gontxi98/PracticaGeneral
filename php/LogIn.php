@@ -37,6 +37,7 @@ session_start();
                 }
                 $email = $_REQUEST['dirCorreo'];
                 $pass = $_REQUEST['pass'];
+                $pass = crypt($pass,"SisWeb");
                 
                 $sql = "SELECT * FROM usuarios WHERE email=\"".$email."\" and pass=\"".$pass."\";";
                 

@@ -21,10 +21,16 @@ if(!isset($_SESSION['email'])){
     <script src="../js/ValidateFieldsQuestion.js"></script>
     <script src="../js/ShowQuestionsAjax.js"></script>
     <script src="../js/AddQuestionsAjax.js"></script>
+    <script src="../js/CountQuestionsAJAX.js"></script>
 </head>
 <body>
   <?php include '../php/Menus.php' ?>
   <section class="main" id="s1">
+     <div style="text-align:center; border-color:black; border-style:solid; width:40%; margin:auto;">
+        <p> Mis preguntas / Preguntas totales </p>
+        <div id='preg'> </div>
+        <br>
+      </div>
     <div>
         <form action="AddQuestionWithImage.php" name="fquestion" id="fquestion" method="post" enctype="multipart/form-data">
             <p>Introduce tu dirección de correo: *</p>
@@ -47,11 +53,9 @@ if(!isset($_SESSION['email'])){
             </select>
             <p>Introduce el tema de la pregunta: *</p>
             <input type="text" size="60" id="temaPregunta" name="temaPregunta">
-            <!--<div id="selector">-->
-            <!--<input type="file" id="file" accept="image/*" name="Imagen">-->
-            <!--</div>-->
-
-            
+            <br>
+            <input type="file" id="file" accept="image/*" name="file">
+            <br>
             <p>
                 <input type="button" name="enviar" id="enviar" value="Enviar"> 
                 <input type="button" name="mostrarPreguntas" value="Mostrar Preguntas" onclick="mostrarPreguntasXML()">

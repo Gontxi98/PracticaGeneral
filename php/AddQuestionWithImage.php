@@ -30,14 +30,17 @@
                             $respuestai3 = $_REQUEST['respuestaIncorrecta3'];
                             $complejidad = $_REQUEST['complejidad'];
                             $tema = $_REQUEST['temaPregunta'];
-                            //$image = $_FILES['Imagen']['tmp_name'];
-                            //$contenido_imagen = base64_encode(file_get_contents($image));
-                              $contenido_imagen = null;
+  
+                            $image = $_FILES['file']['tmp_name'];
+                            $contenido_imagen = base64_encode(file_get_contents($image));
+                                                        
+                            
                             $sql = "INSERT INTO preguntas(email, enunciado, respuestac, respuestai1, respuestai2, respuestai3, complejidad, tema, imagen) VALUES('$email', '$enunciado', '$respuestac', '$respuestai1', '$respuestai2', '$respuestai3', $complejidad, '$tema', '$contenido_imagen')";
 
                             if(!mysqli_query($mysqli,$sql))
-                            {
-                                die("Error: " .mysqli_error($mysqli));
+                            {   
+                              
+                              die("Error: " .mysqli_error($mysqli));
                             }
                             echo "Registro añadido<br>";
                             //echo "<a href=\"ShowQuestionsWithImage.php?email=".$_GET['dirCorreo']."\">Click en este enlace para ver todos los registros.</a>";
@@ -64,7 +67,8 @@
 
                                 $xml->asXML('../xml/Questions.xml');
                                 echo "Pregunta añadida al archivo XML";
-                              }                             
+                              }  
+                                                       
                      }else{
                          echo "El enunciado de la pregunta debe tener mas de 10 caracteres.<br>";
                          echo"<a href='javascript:history.back()'>Volver al formulario.</a>";
@@ -72,8 +76,8 @@
                  }else{
                     echo "El correo electronico no es correcto.<br>";
                     echo"<a href='javascript:history.back()'>Volver al formulario.</a>";
-                 }            
-            }          
+                 }  
+                 }                    
           ?>
     </div>
   </section>
